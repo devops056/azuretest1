@@ -20,7 +20,6 @@ angular: # name of the first service
 build: # specify the directory of the Dockerfile
 context: ./angular.json
 container_name: mean_angular
-volumes:
 ports:
 - "4200:4200" # specify port forewarding
 - "49153:49153"
