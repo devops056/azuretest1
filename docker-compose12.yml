@@ -25,11 +25,11 @@ services:
         - WEB_SSL=false
         - SELF_SIGNED=false
         - NO_DEFAULT=false
-      volumes:
-        - ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_available/
-        - ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_enable/
-        - ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_available/
-        - ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_enable/
+      #volumes:
+        #- ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_available/
+        #- ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_enable/
+        #- ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_available/
+        #- ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_enable/
     ports:
       - "80:80"
       - "443:443"
