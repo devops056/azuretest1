@@ -46,5 +46,5 @@ services:
         - YARN=false
     volumes:
       - ../:/opt/app
-    entrypoint: run-node "node index.js"
+    ##entrypoint: run-node "node index.js"
     tty: true
