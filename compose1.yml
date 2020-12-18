@@ -1,4 +1,4 @@
-version: '2.2'
+version: '1.15.3'
 services:
   # angular
   angular: # name of the first service
@@ -16,6 +16,7 @@ services:
       - NODE_ENV=dev
 #node       
 node:
+  version: '1.25.3'
     build:
       context: ./index.js
       dockerfile: /Dockerfile1
