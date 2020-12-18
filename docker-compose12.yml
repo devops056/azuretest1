@@ -1,0 +1,35 @@
+version: "3.7"
+ 
+services:
+    nginx:
+      container_name: nginx
+      image: ${DOCKER_ACCT}/nginx
+      build: 
+        context: .
+        dockerfile: .docker/nginx.${APP_ENV}.dockerfile
+      # links are deprecated (networks are used instead for communication and 
+      # depends_on for upstream node name in nginx config)
+      # links:
+      #   - node1:node1
+      #   - node2:node2
+      #   - node3:node3
+      depends_on: 
+        - node
+      ports:
+        - "80:80"
+        - "443:443"
+    
+        
+    node:
+      container_name: node123
+      image: ${DOCKER_ACCT}/node-codewithdan
+      build: 
+        context: .
+        dockerfile: .docker/node-node123.${APP_ENV}.dockerfile
+      ports:
+      - "8080"
+      volumes:
+        - .:/var/www/node123
+      working_dir: /var/www/node123
+      env_file:
+        - ./.docker/env/app.${APP_ENV}.env
