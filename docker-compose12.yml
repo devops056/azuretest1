@@ -3,10 +3,10 @@ version: "3.7"
 services:
     nginx:
       container_name: nginx
-      image: ${DOCKER_ACCT}/nginx
+     
       build: 
         context: .
-        dockerfile: .docker/nginx.${APP_ENV}.dockerfile12
+        dockerfile: Dockerfile12
       # links are deprecated (networks are used instead for communication and 
       # depends_on for upstream node name in nginx config)
       # links:
@@ -22,10 +22,10 @@ services:
         
     node:
       container_name: node123
-      image: ${DOCKER_ACCT}/node-codewithdan
+     
       build: 
         context: .
-        dockerfile: .docker/node-node123.${APP_ENV}.dockerfile2
+        dockerfile: dockerfile2
       ports:
       - "8080"
       volumes:
