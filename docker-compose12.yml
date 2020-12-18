@@ -4,7 +4,7 @@ services:
   # angular
   angular: # name of the first service
     build: # specify the directory of the Dockerfile
-      context: .
+      context: ./angular
       dockerfile: Dockerfile12
     container_name: mean_angular
     volumes:
@@ -16,7 +16,7 @@ services:
     environment:
       - NODE_ENV=dev
   # nginx
-  nginx:
+  nginx: ./nginx
     build:
       context: .
       dockerfile: Dockerfile12
@@ -37,7 +37,7 @@ services:
   # node
   node:
     build:
-      context: .
+      context: ./node
       dockerfile: Dockerfile2
       args:
         - NODE_VERSION=latest
@@ -46,5 +46,5 @@ services:
         - YARN=false
     volumes:
       - ../:/opt/app
-    entrypoint: run-nodock "node index.js"
+    entrypoint: run-node "node index.js"
     tty: true
