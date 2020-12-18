@@ -16,9 +16,9 @@ services:
     environment:
       - NODE_ENV=dev
   # nginx
-  nginx: ./nginx
+  nginx: 
     build:
-      context: .
+      context: ./nginx
       dockerfile: Dockerfile12
       args:
         - WEB_REVERSE_PROXY_PORT=8000
