@@ -2,7 +2,7 @@
   nginx:
     build:
       context: ./nginx
-      dockerfile: Dockerfile2
+      dockerfile: /Dockerfile2
       args:
         - WEB_REVERSE_PROXY_PORT=8000
         - WEB_SSL=false
