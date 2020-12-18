@@ -13,4 +13,3 @@ COPY /nginx_file/angular.gaurangacharya.co.conf /etc/nginx/sites_enable/
 VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html", "/etc/nginx/sites_available", "/etc/nginx/sites_enable", "/etc/nginx/sites_available"]
 
 CMD ["nginx"]
-CMD ["restart"]
