@@ -1,34 +1,50 @@
-version: "3.7"
- 
+version: '3.8'
+
 services:
-    nginx:
-      container_name: nginx
-     
-      build: 
-        context: .
-        dockerfile: Dockerfile12
-      # links are deprecated (networks are used instead for communication and 
-      # depends_on for upstream node name in nginx config)
-      # links:
-      #   - node1:node1
-      #   - node2:node2
-      #   - node3:node3
-      depends_on: 
-        - node
-      ports:
-        - '80:80'
-        - '443:443'
-    
-        
-    node:
-      container_name: node123
-     
-      build: 
-        context: .
-        dockerfile: dockerfile2
-      ports:
-      - "8080"
+  # angular
+  angular: # name of the first service
+    build: # specify the directory of the Dockerfile
+      context: .
+      dockerfile: Dockerfile12
+    container_name: mean_angular
+    volumes:
+      - ./frontend:/frontend
+      - /frontend/node_modules
+    ports:
+      - "4200:4200" # specify port forewarding
+      - "49153:49153"
+    environment:
+      - NODE_ENV=dev
+  # nginx
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile12
+      args:
+        - WEB_REVERSE_PROXY_PORT=8000
+        - WEB_SSL=false
+        - SELF_SIGNED=false
+        - NO_DEFAULT=false
       volumes:
-        - .:/var/www/node123
-      working_dir: /var/www/node123
-     
+        - ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_available/
+        - ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_enable/
+        - ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_available/
+        - ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_enable/
+    ports:
+      - "80:80"
+      - "443:443"
+    tty: true
+  # node
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile2
+      args:
+        - NODE_VERSION=latest
+        - PROJECT_PATH=/opt/app/
+        - NODE_ENV=production
+        - YARN=false
+    volumes:
+      - ../:/opt/app
+    entrypoint: run-nodock "node index.js"
+    tty: true
