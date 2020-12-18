@@ -31,5 +31,4 @@ services:
       volumes:
         - .:/var/www/node123
       working_dir: /var/www/node123
-      env_file:
-        - ./.docker/env/app.${APP_ENV}.env
+     
