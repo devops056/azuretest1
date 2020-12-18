@@ -4,7 +4,7 @@ services:
   # angular
   angular: # name of the first service
     build: # specify the directory of the Dockerfile
-      context: ./angular
+      context: .
       dockerfile: Dockerfile12
     container_name: mean_angular
     volumes:
@@ -18,8 +18,8 @@ services:
   # nginx
   nginx: 
     build:
-      context: ./nginx
-      dockerfile: Dockerfile12
+      context: .
+      dockerfile: Dockerfile2
       args:
         - WEB_REVERSE_PROXY_PORT=8000
         - WEB_SSL=false
@@ -37,8 +37,8 @@ services:
   # node
   node:
     build:
-      context: ./node
-      dockerfile: Dockerfile2
+      context: .
+      dockerfile: Dockerfile12
       args:
         - NODE_VERSION=latest
         - PROJECT_PATH=/opt/app/
