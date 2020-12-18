@@ -12,6 +12,6 @@ COPY /nginx_file/angular.gaurangacharya.co.conf /etc/nginx/sites_enable/
 #Define mountable directories.
 VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html", "/etc/nginx/sites_available", "/etc/nginx/sites_enable", "/etc/nginx/sites_available"]
 
-CMD ["dockerize", "-template", "/etc/nginx/nginx.tmpl:/etc/nginx/nginx.conf", "nginx", "-g", "daemon off;"]
+#CMD ["dockerize", "-template", "/etc/nginx/nginx.tmpl:/etc/nginx/conf.d", "nginx", "-g", "daemon off;"]
 CMD ["nginx"]
 CMD ["restart"]
