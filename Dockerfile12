@@ -20,12 +20,6 @@ RUN npm install -g @angular/cli@7.3.9
 #add app
 COPY . /app 
 
-# add app
-COPY /nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_available/
-COPY /nginx_file/angular.gaurangacharya.co.conf /etc/nginx/sites_enable/
-COPY /nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_available/
-COPY /nginx_file/angular.gaurangacharya.co.conf /etc/nginx/sites_enable/
-
 #serve the app
 CMD ["npm", "start", "run"]
 
