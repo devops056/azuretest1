@@ -4,7 +4,7 @@ services:
   angular: # name of the first service
     build: # specify the directory of the Dockerfile
       context: ./angular.json
-      dockerfile: /Dockerfile12
+      dockerfile: Dockerfile12
     container_name: mean_angular
     volumes:
       - ./frontend:/frontend
@@ -19,7 +19,7 @@ node:
   version: '1.25.3'
     build:
       context: ./index.js
-      dockerfile: /Dockerfile12
+      dockerfile: Dockerfile12
       args:
         - NODE_VERSION=latest
         - PROJECT_PATH=/opt/app/
