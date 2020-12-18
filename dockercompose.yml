@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3'
 dockerfile: Dockerfile1
 services:
 node:
@@ -27,7 +27,7 @@ environment:
 - NODE_ENV=dev
 
 nginx:
-build:
+build: .
 context:
 - ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_available/
 - ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_enable/
