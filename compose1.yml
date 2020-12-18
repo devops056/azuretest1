@@ -3,7 +3,7 @@ services:
   # angular
   angular: # name of the first service
     build: # specify the directory of the Dockerfile
-      context: ./angular
+      context: ./angular.json
       dockerfile: Dockerfile1
     container_name: mean_angular
     volumes:
@@ -14,23 +14,16 @@ services:
       - "49153:49153"
     environment:
       - NODE_ENV=dev
-	  
-	  # nginx
-  nginx:
+node:
     build:
-      context: ./nginx
+      context: ./index.js
       dockerfile: Dockerfile1
       args:
-        - WEB_REVERSE_PROXY_PORT=8000
-        - WEB_SSL=false
-        - SELF_SIGNED=false
-        - NO_DEFAULT=false
+        - NODE_VERSION=latest
+        - PROJECT_PATH=/opt/app/
+        - NODE_ENV=production
+        - YARN=false
     volumes:
-- ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_available/
-- ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_enable/
-- ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_available/
-- ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_enable/
-    ports:
-      - "80:80"
-      - "443:443"
+      - ../:/opt/app
+    entrypoint: run-nodock "node index.js"
     tty: true
