@@ -27,11 +27,13 @@ environment:
 #nginx configration
 nginx: 
 build: .
-context:
+context: .
+volumes:
 - ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_available/
 - ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_enable/
 - ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_available/
 - ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_enable/
+
 args:
 - WEB_REVERSE_PROXY_PORT=8000
 - WEB_SSL=false
