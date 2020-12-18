@@ -1,8 +1,8 @@
-version: '3.6'
-dockerfile: Dockerfile1
+version: '3.8'
 services:
-node:
-build:
+dockerfile: Dockerfile1
+node: 
+build: .
 context: ./index.js
 args:
 - NODE_VERSION=latest
@@ -12,12 +12,11 @@ args:
 volumes:
 - ../:/opt/app
 entrypoint: run-nodock "node index.js"
-tty: true
 
 # Define the services/containers to be run
 services:
 angular: # name of the first service
-build: # specify the directory of the Dockerfile
+build: . # specify the directory of the Dockerfile
 context: ./angular.json
 container_name: mean_angular
 ports:
@@ -26,6 +25,7 @@ ports:
 environment:
 - NODE_ENV=dev
 #nginx configration
+nginx: 
 build: .
 context:
 - ./nginx_file/node.gaurangacharya.co.conf /etc/nginx/sites_available/
@@ -43,3 +43,4 @@ volumes:
 ports:
 - "80:80"
 - "443:443"
+tty: true
