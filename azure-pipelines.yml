@@ -3,7 +3,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-- master
+- main
 
 resources:
 - repo: self
@@ -12,9 +12,9 @@ variables:
 
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: 'Docker-Registry-Service-Connection-ID'
-  imageRepository: 'pythonapp'
-  containerRegistry: 'cloudorbit.azurecr.io'
-  dockerfilePath: '**/Dockerfile'
+  imageRepository: 'cicd123'
+  containerRegistry: 'cicd123acr.azurecr.io'
+  dockerfilePath: '**/Dockerfile12'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'Image-Pull-Secret'
 
