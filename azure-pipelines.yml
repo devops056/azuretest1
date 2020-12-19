@@ -70,7 +70,7 @@ stages:
             inputs:
               action: deploy
               manifests: |
-                ./app.yml
+                $(Build.SourcesDirectory)/app.yml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
